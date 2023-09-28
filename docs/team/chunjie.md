@@ -4,13 +4,13 @@ SteveJobs++ is a desktop address book and job application tracking tool. The use
 
 Given below are my contributions to the project.
 
-* **New Feature**: 
-    * What it does: 
-    * Justification: 
-    * Highlights: 
+* **New Feature**:
+    * What it does:
+    * Justification:
+    * Highlights:
     * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
 
-* **New Feature**: 
+* **New Feature**:
 
 * **Code contributed**: [RepoSense link]()
 
@@ -23,7 +23,7 @@ Given below are my contributions to the project.
     * User Guide:
         *
     * Developer Guide:
-        * 
+        *
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments): 
@@ -31,6 +31,6 @@ Given below are my contributions to the project.
     * Reported bugs and suggestions for other teams in the class (examples: )
 
 * **Tools**:
-    * 
+    *
 
 * _{you can add/remove categories in the list above}_
