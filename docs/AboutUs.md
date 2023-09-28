@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Chun Jie
 
-<img src="images/chunjie.png" width="200px">
+<img src="images/cj-lee01.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/CJ-Lee01)]
