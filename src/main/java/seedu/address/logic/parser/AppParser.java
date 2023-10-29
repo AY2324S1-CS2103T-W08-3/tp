@@ -20,6 +20,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.ImportCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -89,6 +90,9 @@ public class AppParser {
         case ApplyCommand.COMMAND_WORD:
             return new ApplyCommandParser().parse(arguments);
 
+        case ImportCommand.COMMAND_WORD:
+            return new ImportCommandParser().parse(arguments);
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -129,6 +133,9 @@ public class AppParser {
         case SortCommand.COMMAND_WORD:
             return new AutocompleteGenerator(SortCommand.AUTOCOMPLETE_SUPPLIER);
 
+        case ImportCommand.COMMAND_WORD:
+            return new AutocompleteGenerator(ImportCommand.AUTOCOMPLETE_SUPPLIER);
+
         case ClearCommand.COMMAND_WORD:
         case FindCommand.COMMAND_WORD:
         case ExitCommand.COMMAND_WORD:
@@ -141,7 +148,7 @@ public class AppParser {
                     Command.getCommandWords(Stream.of(
                             AddCommand.class, ApplyCommand.class, DeleteCommand.class, EditCommand.class,
                             ListCommand.class, FindCommand.class, SortCommand.class, HelpCommand.class,
-                            ClearCommand.class, ExitCommand.class
+                            ClearCommand.class, ExitCommand.class, ImportCommand.class
                     )).filter(Optional::isPresent).map(Optional::get)
             );
 
