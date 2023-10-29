@@ -76,8 +76,8 @@ public class AutocompleteTextField extends TextField {
         this.autocompletePopup = new ContextMenu();
 
         // Setup autocompletion popup menu UI updates
-        this.textProperty().addListener(e -> updatePopupState());
-        this.focusedProperty().addListener(e -> updatePopupState());
+        this.textProperty().addListener(e -> refreshPopupState());
+        this.focusedProperty().addListener(e -> refreshPopupState());
 
         // Setup autocompletion undo data cleanup
         this.textProperty().addListener((e, oldValue, newValue) -> updateUndoHistoryState(oldValue, newValue));
@@ -138,7 +138,7 @@ public class AutocompleteTextField extends TextField {
         // Update the view and cursor location
         this.requestFocus();
         this.end();
-        this.updatePopupState();
+        this.refreshPopupState();
     }
 
     /**
@@ -167,7 +167,7 @@ public class AutocompleteTextField extends TextField {
         // Update the view and cursor location
         this.requestFocus();
         this.end();
-        this.updatePopupState();
+        this.refreshPopupState();
         return true;
     }
 
@@ -181,7 +181,7 @@ public class AutocompleteTextField extends TextField {
     /**
      * Updates the state of the popup indicating the autocompletion entries.
      */
-    protected void updatePopupState() {
+    public void refreshPopupState() {
         String text = getText();
         if (text.isEmpty() || !isFocused()) {
             autocompletePopup.hide();

@@ -41,8 +41,13 @@ public class CommandBox extends UiPart<Region> {
 
         assert commandTextField != null;
         commandTextField.setCompletionGenerator(completionGenerator);
+
         commandTextField.setOnKeyPressed(this::handleKeyEvent);
+        commandTextField.setOnKeyReleased(this::handleKeyEvent);
+        commandTextField.setOnKeyTyped(this::handleKeyEvent);
+
         commandTextField.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyFilter);
+        commandTextField.addEventFilter(KeyEvent.KEY_RELEASED, this::handleKeyFilter);
         commandTextField.addEventFilter(KeyEvent.KEY_TYPED, this::handleKeyFilter);
 
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
@@ -55,21 +60,29 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleKeyEvent(KeyEvent keyEvent) {
-        if (keyEvent.getEventType() != KeyEvent.KEY_PRESSED) {
-            return;
-        }
 
-        if (keyEvent.getCode() == KeyCode.ENTER) {
+        // Note:
+        //   These captures keystrokes at different KeyEvent due to weird JavaFX quirks not actually delivering
+        //   all events at all situations.
+
+        if (keyEvent.getEventType() == KeyEvent.KEY_RELEASED
+                && keyEvent.getCode() == KeyCode.ENTER) {
+
             logger.fine("Received key ENTER");
             this.handleCommandEntered();
 
-        } else if (keyEvent.getCode() == KeyCode.TAB) {
+        } else if (keyEvent.getEventType() == KeyEvent.KEY_PRESSED
+                && keyEvent.getCode() == KeyCode.TAB) {
+
             logger.fine("Intercepted TAB key");
 
             keyEvent.consume(); // consume by default
             commandTextField.requestFocus(); // revert to this focus in case (otherwise tab changes focus)
+            commandTextField.end();
 
             this.handleCommandAutocompleted(keyEvent);
+
+            commandTextField.refreshPopupState();
         }
     }
 
@@ -83,7 +96,9 @@ public class CommandBox extends UiPart<Region> {
             return;
         }
 
-        // Note: Possible JavaFX bug: KEY_PRESSED is not fired for SPACE. We use KEY_TYPED instead to catch it.
+        // Note:
+        //   These captures keystrokes at different KeyEvent due to weird JavaFX quirks not actually delivering
+        //   all events at all situations.
 
         if (keyEvent.getEventType() == KeyEvent.KEY_TYPED
                 && Objects.equals(keyEvent.getCharacter(), " ")) {
