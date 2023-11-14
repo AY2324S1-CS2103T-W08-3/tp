@@ -400,7 +400,7 @@ Adds a recruiter contact with the details given to the command.
 
 ##### Format
 ```sh
-edit INDEX/ID [--name NAME] [--id ID] [--phone PHONE] [--email EMAIL] [--url URL] [--address ADDRESS] [--tag TAG]...
+edit INDEX/ID [--name NAME] [--id ID] [--phone NUMBER] [--email EMAIL] [--url URL] [--address ADDRESS] [--tag TAG]...
 ```
 Edits the given contact according to the parameters given.
 * You can supply more than one parameter to change multiple details of a contact in one command.
@@ -759,7 +759,7 @@ Jobby's data are saved automatically as a JSON file `[JAR file location]/data/jo
 | **Add Organization** | `add --org --name NAME [--id ID] [--phone NUMBER] [--email EMAIL] [--url URL] [--address ADDRESS] [--tag TAG]...`{:.language-sh}<br> e.g., `add --org --name NUS --phone 0123456789 --email example@nus.edu.sg --url https://www.nus.edu.sg/`{:.language-sh} |
 | **Add Recruiter**    | `add --rec --name NAME [--id ID] [--oid ORG_ID] [--phone NUMBER] [--email EMAIL] [--url URL] [--address ADDRESS] [--tag TAG]...`{:.language-sh}<br> e.g., `add --rec --name John Doe --oid paypal-sg`{:.language-sh}                                         |
 | **Delete Contact**   | `delete INDEX/ID [--recursive]`{:.language-sh} <br> e.g., `delete 3`, `delete id-55tg`                                                                                                                                                        |
-| **Edit Contact**     | `edit INDEX/ID [--name NAME] [--id ID] [--phone PHONE] [--email EMAIL] [--url URL] [--address ADDRESS] [--tag TAG]...`{:.language-sh}                                                                                                         |
+| **Edit Contact**     | `edit INDEX/ID [--name NAME] [--id ID] [--phone NUMBER] [--email EMAIL] [--url URL] [--address ADDRESS] [--tag TAG]...`{:.language-sh}                                                                                                         |
 | **Find**             | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                     |
 | **List**             | `list [--org / --rec / --toapply]`{:.language-sh}                                                                                                                                                                                                 |
 | **Sort Contacts**    | `sort --address / --email / --id / --name / --phone / --url [--ascending / --descending]`{:.language-sh}                                                                                                                                                  |
